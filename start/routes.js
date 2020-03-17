@@ -16,7 +16,9 @@
 const Route = use('Route');
 
 Route.get('/', () => ({ greeting: 'Hello world in JSON' }));
-Route.post('/sessions', 'SessionController.store');
+
+Route.post('users', 'UserController.store');
+Route.post('sessions', 'SessionController.store');
 
 Route.group(() => {
   Route.resource('teams', 'TeamController').apiOnly();
