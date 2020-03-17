@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 
 const User = use('App/Models/User');
 const Invite = use('App/Models/Invite');
