@@ -17,18 +17,36 @@ const Route = use('Route');
 
 Route.get('/', () => ({ greeting: 'Hello world in JSON' }));
 
-Route.post('users', 'UserController.store');
-Route.post('sessions', 'SessionController.store');
+Route.post('users', 'UserController.store').validator('User');
+Route.post('sessions', 'SessionController.store').validator('Session');
 
 Route.group(() => {
-  Route.resource('teams', 'TeamController').apiOnly();
+  Route.resource('teams', 'TeamController')
+    .apiOnly()
+    .validator(
+      new Map([
+        [
+          ['teams.store', 'teams.update'],
+          ['Team'],
+        ],
+      ]),
+    );
 }).middleware('auth');
 
 
 Route.group(() => {
-  Route.post('invites', 'InviteController.store');
+  Route.post('invites', 'InviteController.store').validator('Invite');
 }).middleware(['auth']);
 
 Route.group(() => {
-  Route.resource('projects', 'ProjectController').apiOnly();
+  Route.resource('projects', 'ProjectController')
+    .apiOnly()
+    .validator(
+      new Map([
+        [
+          ['projects.store', 'projects.update'],
+          ['Project'],
+        ],
+      ]),
+    );
 }).middleware(['auth', 'team']);
