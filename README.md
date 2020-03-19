@@ -32,5 +32,8 @@ adonis seed
 ```
 
 ```js
-docker start b69189bd91ab
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+2d843f4f3eab        redis:alpine        "docker-entrypoint.s…"   2 months ago        Up About a minute   0.0.0.0:6379->6379/tcp   redisatual
+b69189bd91ab        postgres:11         "docker-entrypoint.s…"   2 months ago        Up 49 seconds       0.0.0.0:5432->5432/tcp   newdatause
 ```
