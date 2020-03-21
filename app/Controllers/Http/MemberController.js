@@ -6,8 +6,8 @@ class MemberController {
     const members = await UserTeam
       .query()
       .where('team_id', request.team.id)
+      .with('user')
       .with('roles')
-      //.with('user')
       .fetch()
 
     return members

@@ -23,8 +23,9 @@ Route.post('sessions', 'SessionController.store').validator('Session');
 Route.group(()=>{
   Route.get('/members','MemberController.index')
   Route.put('/members/:id','MemberController.update').middleware('is:administrator');
-
+  Route.get('/permissions','PermissionController.show')
 }).middleware(['auth','team'])
+
 
 Route.group(() => {
   Route.get('/roles','RoleController.index')
@@ -59,7 +60,7 @@ Route.group(() => {
       new Map([
         [
           ['projects.store', 'projects.update'],
-          ['can:project_create'],
+          ['can:projects_create'],
         ],
       ]),
     );
