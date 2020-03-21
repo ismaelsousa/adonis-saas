@@ -20,6 +20,12 @@ Route.get('/', () => ({ greeting: 'Hello world in JSON' }));
 Route.post('users', 'UserController.store').validator('User');
 Route.post('sessions', 'SessionController.store').validator('Session');
 
+Route.group(()=>{
+  Route.get('/members','MemberController.index')
+  Route.put('/members/:id','MemberController.update').middleware('is:administrator');
+
+}).middleware(['auth','team'])
+
 Route.group(() => {
   Route.get('/roles','RoleController.index')
   Route.resource('teams', 'TeamController')
@@ -57,4 +63,5 @@ Route.group(() => {
         ],
       ]),
     );
+
 }).middleware(['auth', 'team']);
