@@ -22,6 +22,7 @@ const providers = [
   '@adonisjs/framework/providers/ViewProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
   'adonis-acl/providers/AclProvider',
+  '@adonisjs/cors/providers/CorsProvider'
 ];
 
 /*
